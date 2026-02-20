@@ -1,0 +1,105 @@
+---
+import DefaultLayout from '../layouts/DefaultLayout.astro'
+---
+
+<DefaultLayout title="Portfolio | Desarrollador Web">
+  
+  <section class="flex flex-col items-center justify-center min-h-[70vh] text-center px-4 mt-12">
+    <span class="text-[#8b7ed8] font-semibold tracking-wider uppercase mb-4">
+      Hola mundo, soy
+    </span>
+    
+    <h1 class="text-5xl md:text-7xl font-bold mb-6 text-[#E2E8F0]">
+      Juan Diego Delgado Morente
+    </h1>
+    
+    <p class="text-xl md:text-2xl text-[#a09eb5] max-w-2xl mb-10 leading-relaxed">
+      Estudiante de <strong class="text-[#E2E8F0] font-normal">Desarrollo y Aplicaciones Web</strong>. 
+      Me apasiona construir aplicaciones limpias, eficientes y resolver problemas a través del código y de las innovaciones que nos ofrece la herramienta de la IAº. 
+      Preparado para dar el salto al mundo profesional.
+    </p>
+    
+    <div class="flex flex-col sm:flex-row gap-4">
+      <a href="#proyectos" class="bg-[#4a3f75] text-[#c4c0db] px-8 py-3 rounded-lg font-medium hover:bg-[#3b325e] transition-colors">
+        Ver mis proyectos
+      </a>
+      
+      <a href="https://github.com/Juandi01" target="_blank" class="bg-[#1e1b29] border border-[#37314d] text-[#9a96b3] px-8 py-3 rounded-lg font-medium hover:bg-[#2a2638] hover:text-[#c4c0db] transition-colors">
+        Visitar mi GitHub
+      </a>
+    </div>
+  </section>
+
+  <section id="proyectos" class="max-w-5xl mx-auto px-4 py-20">
+    <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center text-[#E2E8F0]">
+      Proyectos <span class="text-[#8b7ed8]">Destacados</span>
+    </h2>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      
+      <article class="bg-[#231f32] rounded-xl border border-[#37314d] overflow-hidden hover:border-[#8b7ed8] transition-colors duration-300">
+        <div class="h-48 border-b border-[#37314d] overflow-hidden relative">
+          <img 
+            src="/proyecto1.png" 
+            alt="Captura de mi proyecto" 
+            class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+          />
+        </div>
+        
+        <div class="p-6">
+          <h3 class="text-2xl font-bold mb-2 text-[#E2E8F0]">App del Clima / Gestor de Tareas</h3>
+          <p class="text-[#a09eb5] mb-6 leading-relaxed">
+            Una breve frase explicando qué hace la aplicación, qué problema resuelve y por qué la hiciste. Sé directo y claro.
+          </p>
+          
+          <div class="flex flex-wrap gap-2 mb-8">
+            <span class="px-3 py-1 bg-[#13111C] border border-[#37314d] rounded-full text-xs font-semibold text-[#8b7ed8]">HTML5</span>
+            <span class="px-3 py-1 bg-[#13111C] border border-[#37314d] rounded-full text-xs font-semibold text-[#8b7ed8]">CSS3</span>
+            <span class="px-3 py-1 bg-[#13111C] border border-[#37314d] rounded-full text-xs font-semibold text-[#8b7ed8]">JavaScript</span>
+          </div>
+          
+          <div class="flex gap-4">
+            <a href="#" target="_blank" class="flex-1 text-center bg-[#4a3f75] text-[#c4c0db] py-2.5 rounded-lg font-medium hover:bg-[#3b325e] transition-colors">
+              Ver Demo
+            </a>
+            <a href="#" target="_blank" class="flex-1 text-center bg-[#1e1b29] border border-[#37314d] text-[#9a96b3] py-2.5 rounded-lg font-medium hover:bg-[#2a2638] hover:text-[#c4c0db] transition-colors">
+              Código
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <article class="bg-[#231f32] rounded-xl border border-[#37314d] overflow-hidden hover:border-[#8b7ed8] transition-colors duration-300">
+        <div class="h-48 border-b border-[#37314d] overflow-hidden relative">
+          <img 
+            src="/proyecto2.png" 
+            alt="Captura de mi proyecto" 
+            class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+          />
+        </div>
+        <div class="p-6">
+          <h3 class="text-2xl font-bold mb-2 text-[#E2E8F0]">Proyecto Blog con Symfony</h3>
+          <p class="text-[#a09eb5] mb-6 leading-relaxed">
+            Diseño responsive creado desde cero para un, blog enfocado en accesibilidad y rendimiento web.
+          </p>
+          <div class="flex flex-wrap gap-2 mb-8">
+            <span class="px-3 py-1 bg-[#13111C] border border-[#37314d] rounded-full text-xs font-semibold text-[#8b7ed8]">PHP</span>
+            <span class="px-3 py-1 bg-[#13111C] border border-[#37314d] rounded-full text-xs font-semibold text-[#8b7ed8]">Symfony</span>
+            <span class="px-3 py-1 bg-[#13111C] border border-[#37314d] rounded-full text-xs font-semibold text-[#8b7ed8]">JavaScript</span>
+            <span class="px-3 py-1 bg-[#13111C] border border-[#37314d] rounded-full text-xs font-semibold text-[#8b7ed8]">Tailwind</span>
+          </div>
+          <div class="flex gap-4">
+            <a href="#" target="_blank" class="flex-1 text-center bg-[#4a3f75] text-[#c4c0db] py-2.5 rounded-lg font-medium hover:bg-[#3b325e] transition-colors">
+              Ver Demo
+            </a>
+            <a href="#" target="_blank" class="flex-1 text-center bg-[#1e1b29] border border-[#37314d] text-[#9a96b3] py-2.5 rounded-lg font-medium hover:bg-[#2a2638] hover:text-[#c4c0db] transition-colors">
+              Código
+            </a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+</DefaultLayout>

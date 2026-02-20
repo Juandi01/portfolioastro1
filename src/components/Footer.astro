@@ -1,0 +1,46 @@
+---
+import CallToAction from './CallToAction.astro'
+import Logo from './Logo.astro'
+import { Heading, Link } from 'accessible-astro-components'
+
+/**
+ * Footer Component
+ *
+ * @description A component that displays the footer of the website
+ */
+const currentYear = new Date().getFullYear()
+---
+
+<footer class="border-t border-[#37314d] mt-24 bg-[#13111C]">
+  <div class="max-w-5xl mx-auto px-4 py-12 flex flex-col md:flex-row justify-between items-center gap-6">
+    
+    <div class="text-center md:text-left">
+      <h3 class="text-xl font-bold text-[#E2E8F0] mb-2">¿Hablamos?</h3>
+      <p class="text-[#a09eb5]">Buscando mi primera oportunidad en el mundo del desarrollo.</p>
+    </div>
+    
+    <div class="flex gap-6">
+      <a href="mailto:juandi.dm7@gmail.com" class="text-[#a09eb5] hover:text-[#8b7ed8] transition-colors font-medium">
+        Email
+      </a>
+      <a href="https://linkedin.com/in/juandi-delgado-6240b2321" target="_blank" class="text-[#a09eb5] hover:text-[#8b7ed8] transition-colors font-medium">
+        LinkedIn
+      </a>
+      <a href="https://github.com/Juandi01" target="_blank" class="text-[#a09eb5] hover:text-[#8b7ed8] transition-colors font-medium">
+        GitHub
+      </a>
+    </div>
+  </div>
+  
+  <div class="text-center py-6 border-t border-[#37314d]/50">
+    <p class="text-sm text-[#a09eb5]/70">
+      © {new Date().getFullYear()} Juan Diego Delgado Morente. Construido con <span class="text-[#8b7ed8]">Astro</span> y Tailwind.
+    </p>
+  </div>
+</footer>
+
+<style>
+  section {
+    border-top: 1px solid var(--border-color-subtle);
+  }
+</style>
