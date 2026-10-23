@@ -1,162 +1,1130 @@
 ---
-import DefaultLayout from '../layouts/DefaultLayout.astro'
+// src/pages/index.astro
+// Portfolio Spider-Verse de Juan Diego Delgado Morente
+const proyectos = [
+  {
+    edicion: "EDICIÓN #01 // FULL-STACK",
+    titulo: "ZENPAW 2.0",
+    descripcion: "Blog ZenPaw mejorado. Aplicación web completa desarrollada con arquitectura MVC en Symfony y Tailwind CSS.",
+    imagen: "/portfolioastro1/proyecto3.png",
+    etiqueta: "¡NUEVA VERSIÓN!",
+    tecnologias: ["PHP", "Symfony", "Tailwind CSS"],
+    repo: "https://github.com/Juandi01/ZenPaw2.0.git",
+    categoria: "symfony"
+  },
+  {
+    edicion: "EDICIÓN #02 // AUTOMOCIÓN UI",
+    titulo: "LANDING PAGE AUDI",
+    descripcion: "Landing page promocional moderna y responsive inspirada en el sector automovilístico de alta gama.",
+    imagen: "/portfolioastro1/proyecto4.png",
+    etiqueta: "DISEÑO RESPONSIVE",
+    tecnologias: ["HTML5", "Tailwind CSS", "JavaScript"],
+    repo: "https://github.com/Juandi01/LandingAudi.git",
+    categoria: "frontend"
+  },
+  {
+    edicion: "EDICIÓN #03 // ARQUITECTURA WEB",
+    titulo: "PROYECTO BLOG CON SYMFONY",
+    descripcion: "Diseño responsive creado desde cero aplicando buenas prácticas de accesibilidad web, Tailwind y Symfony.",
+    imagen: "/portfolioastro1/proyecto2.png",
+    etiqueta: "ACCESIBILIDAD + UI",
+    tecnologias: ["PHP", "Symfony", "Tailwind CSS"],
+    repo: "https://github.com/Juandi01/Cliente-25-26/tree/main/Cliente%2025-26/Practica4",
+    categoria: "symfony"
+  },
+  {
+    edicion: "EDICIÓN #04 // PRODUCTIVIDAD",
+    titulo: "GESTOR DE TAREAS",
+    descripcion: "Aplicación interactiva de gestión de tareas con manipulación ágil del DOM e interfaz intuitiva.",
+    imagen: "/portfolioastro1/proyecto1.png",
+    etiqueta: "DOM INTERACTIVO",
+    tecnologias: ["HTML5", "CSS3", "JavaScript"],
+    repo: "https://github.com/Juandi01/Cliente-25-26/tree/main/Cliente%2025-26/Practica4",
+    categoria: "frontend"
+  }
+];
 ---
+<html lang="es" class="scroll-smooth"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juan Diego Delgado | Full-Stack Spider-Verse Portfolio</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Bangers (Comic Titles), Space Grotesk (Body), JetBrains Mono (Code/Tags) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&amp;family=JetBrains+Mono:wght@500;700;800&amp;family=Space+Grotesk:wght@400;600;700&amp;display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
 
-<DefaultLayout title="Portfolio | Desarrollador Web">
-  
-  <section class="flex flex-col items-center justify-center min-h-[70vh] text-center px-4 mt-12">
-    <span class="text-[#8b7ed8] font-semibold tracking-wider uppercase mb-4">
-      Hola mundo, soy
-    </span>
-    
-    <h1 class="text-5xl md:text-7xl font-bold mb-6 text-[#E2E8F0]">
-      Juan Diego Delgado Morente
-    </h1>
-    
-    <p class="text-xl md:text-2xl text-[#a09eb5] max-w-2xl mb-10 leading-relaxed">
-      Estudiante de <strong class="text-[#E2E8F0] font-normal">Desarrollo y Aplicaciones Web</strong>. 
-      Me apasiona construir aplicaciones limpias, eficientes y resolver problemas a través del código y de las innovaciones que nos ofrece la herramienta de la IAº. 
-      Preparado para dar el salto al mundo profesional.
-    </p>
-    
-    <div class="flex flex-col sm:flex-row gap-4">
-      <a href="#proyectos" class="bg-[#4a3f75] text-[#c4c0db] px-8 py-3 rounded-lg font-medium hover:bg-[#3b325e] transition-colors">
-        Ver mis proyectos
-      </a>
-      
-      <a href="https://github.com/Juandi01" target="_blank" class="bg-[#1e1b29] border border-[#37314d] text-[#9a96b3] px-8 py-3 rounded-lg font-medium hover:bg-[#2a2638] hover:text-[#c4c0db] transition-colors">
-        Visitar mi GitHub
-      </a>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        comic: ['"Bangers"', 'cursive'],
+                        sans: ['"Space Grotesk"', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                    },
+                    colors: {
+                        spider: {
+                            black: '#09090e',
+                            panel: '#12131f',
+                            red: '#ff003c',
+                            cyan: '#00f0ff',
+                            yellow: '#ffe600',
+                            magenta: '#ff007f',
+                            paper: '#f4f1ea'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        :root {
+            --primary-accent: #ff003c;
+            --secondary-accent: #00f0ff;
+            --highlight: #ffe600;
+            --bg-dark: #09090e;
+        }
+
+        body.earth-65 {
+            --primary-accent: #ff007f;
+            --secondary-accent: #00f0ff;
+            --highlight: #00f0ff;
+            --bg-dark: #0f071e;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: #ffffff;
+            overflow-x: hidden;
+            transition: background-color 0.4s ease;
+        }
+
+        /* Patrón de semitonos de cómic (Halftone) */
+        .bg-halftone {
+            background-image: radial-gradient(rgba(255, 0, 60, 0.16) 1.5px, transparent 1.5px),
+                              radial-gradient(rgba(0, 240, 255, 0.1) 1.5px, var(--bg-dark) 1.5px);
+            background-size: 28px 28px;
+            background-position: 0 0, 14px 14px;
+        }
+
+        .halftone-overlay {
+            background-image: radial-gradient(rgba(0, 0, 0, 0.25) 2px, transparent 2px);
+            background-size: 8px 8px;
+        }
+
+        /* Efecto de Aberración Cromática Spider-Verse */
+        .chromatic-text {
+            text-shadow: -3px 0px var(--primary-accent), 3px 0px var(--secondary-accent);
+            letter-spacing: 0.04em;
+        }
+
+        .chromatic-text-sm {
+            text-shadow: -1.5px 0px var(--primary-accent), 1.5px 0px var(--secondary-accent);
+        }
+
+        /* Animación de Glitch al hacer Hover o cambio de dimensión */
+        @keyframes spider-glitch {
+            0% { transform: translate(0) skew(0deg); text-shadow: -3px 0 var(--primary-accent), 3px 0 var(--secondary-accent); }
+            20% { transform: translate(-3px, 2px) skew(-2deg); text-shadow: 4px -2px var(--primary-accent), -4px 2px var(--highlight); }
+            40% { transform: translate(3px, -2px) skew(2deg); text-shadow: -4px 2px var(--secondary-accent), 4px -2px var(--primary-accent); }
+            60% { transform: translate(-2px, -1px) skew(0deg); filter: hue-rotate(45deg); }
+            80% { transform: translate(2px, 1px) skew(-1deg); filter: hue-rotate(0deg); }
+            100% { transform: translate(0) skew(0deg); text-shadow: -3px 0 var(--primary-accent), 3px 0 var(--secondary-accent); }
+        }
+
+        .glitch-hover:hover {
+            animation: spider-glitch 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
+        }
+
+        .screen-glitch {
+            animation: spider-glitch 0.4s steps(2, end) 2;
+        }
+
+        /* Viñetas de cómic Neo-Brutalistas */
+        .comic-panel {
+            background: #12131f;
+            border: 3px solid #000000;
+            box-shadow: 7px 7px 0px #000000, 10px 10px 0px var(--primary-accent);
+            transition: all 0.22s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .comic-panel:hover {
+            transform: translate(-4px, -4px) rotate(-0.6deg);
+            box-shadow: 10px 10px 0px #000000, 14px 14px 0px var(--secondary-accent);
+        }
+
+        .comic-panel-cyan {
+            background: #12131f;
+            border: 3px solid #000000;
+            box-shadow: 7px 7px 0px #000000, 10px 10px 0px var(--secondary-accent);
+            transition: all 0.22s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        /* Cajas narrativas amarillas clásicas de cómic */
+        .comic-caption {
+            background-color: #ffe600;
+            color: #000000;
+            border: 3px solid #000000;
+            box-shadow: 4px 4px 0px #000000;
+            transform: skew(-4deg);
+        }
+
+        /* Botón con Sentido Arácnido */
+        .spider-btn {
+            position: relative;
+            border: 3px solid #000000;
+            box-shadow: 5px 5px 0px #000000;
+            transition: all 0.18s ease;
+        }
+
+        .spider-btn:hover {
+            transform: translate(-3px, -3px) scale(1.02);
+            box-shadow: 8px 8px 0px var(--secondary-accent);
+        }
+
+        .spider-btn:active {
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px #000000;
+        }
+
+        /* Ondas del Sentido Arácnido que aparecen en Hover */
+        .spider-sense-waves {
+            opacity: 0;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+            pointer-events: none;
+        }
+
+        .sense-trigger:hover .spider-sense-waves {
+            opacity: 1;
+            animation: sense-buzz 0.3s infinite alternate;
+        }
+
+        @keyframes sense-buzz {
+            from { transform: scale(0.96) rotate(-2deg); }
+            to { transform: scale(1.04) rotate(2deg); }
+        }
+
+        /* Recorte periódico Daily Bugle */
+        .bugle-card {
+            background: #161826;
+            border: 3px solid #000000;
+            box-shadow: 6px 6px 0px var(--primary-accent);
+            transition: all 0.25s ease;
+        }
+
+        .bugle-card:hover {
+            transform: translateY(-6px) rotate(0.5deg);
+            box-shadow: 10px 10px 0px var(--highlight);
+        }
+
+        /* Scrollbar personalizada */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #09090e;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #ff003c;
+            border: 2px solid #000;
+        }
+    </style>
+<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:"Space Grotesk", sans-serif;font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:"JetBrains Mono", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.pointer-events-none{pointer-events:none}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.sticky{position:sticky}.inset-0{inset:0px}.-bottom-2{bottom:-0.5rem}.-left-6{left:-1.5rem}.-right-2{right:-0.5rem}.-top-3\.5{top:-0.875rem}.-top-6{top:-1.5rem}.bottom-6{bottom:1.5rem}.left-1\.5{left:0.375rem}.left-3{left:0.75rem}.right-0{right:0px}.right-4{right:1rem}.right-6{right:1.5rem}.top-0{top:0px}.top-3{top:0.75rem}.top-4{top:1rem}.z-0{z-index:0}.z-10{z-index:10}.z-40{z-index:40}.z-50{z-index:50}.mx-auto{margin-left:auto;margin-right:auto}.mb-1{margin-bottom:0.25rem}.mb-2{margin-bottom:0.5rem}.mb-3{margin-bottom:0.75rem}.mb-4{margin-bottom:1rem}.mb-5{margin-bottom:1.25rem}.mb-6{margin-bottom:1.5rem}.mt-3{margin-top:0.75rem}.block{display:block}.inline-block{display:inline-block}.flex{display:flex}.inline-flex{display:inline-flex}.grid{display:grid}.hidden{display:none}.h-10{height:2.5rem}.h-12{height:3rem}.h-3{height:0.75rem}.h-32{height:8rem}.h-4{height:1rem}.h-5{height:1.25rem}.h-52{height:13rem}.h-6{height:1.5rem}.h-96{height:24rem}.h-full{height:100%}.max-h-64{max-height:16rem}.max-h-\[90vh\]{max-height:90vh}.w-10{width:2.5rem}.w-12{width:3rem}.w-32{width:8rem}.w-4{width:1rem}.w-5{width:1.25rem}.w-6{width:1.5rem}.w-96{width:24rem}.w-\[90\%\]{width:90%}.w-\[92\%\]{width:92%}.w-\[95\%\]{width:95%}.w-full{width:100%}.max-w-3xl{max-width:48rem}.max-w-4xl{max-width:56rem}.max-w-6xl{max-width:72rem}.max-w-xl{max-width:36rem}.max-w-xs{max-width:20rem}.shrink-0{flex-shrink:0}.rotate-3{--tw-rotate:3deg;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.rotate-45{--tw-rotate:45deg;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.rotate-\[-1deg\]{--tw-rotate:-1deg;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.rotate-\[-2deg\]{--tw-rotate:-2deg;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.rotate-\[-3deg\]{--tw-rotate:-3deg;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.rotate-\[-6deg\]{--tw-rotate:-6deg;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.rotate-\[2deg\]{--tw-rotate:2deg;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.rotate-\[3deg\]{--tw-rotate:3deg;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.transform{transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.cursor-default{cursor:default}.select-all{-webkit-user-select:all;user-select:all}.list-inside{list-style-position:inside}.list-decimal{list-style-type:decimal}.grid-cols-1{grid-template-columns:repeat(1, minmax(0, 1fr))}.flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-1\.5{gap:0.375rem}.gap-2{gap:0.5rem}.gap-2\.5{gap:0.625rem}.gap-3{gap:0.75rem}.gap-4{gap:1rem}.gap-6{gap:1.5rem}.gap-8{gap:2rem}.space-y-1 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.25rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.25rem * var(--tw-space-y-reverse))}.space-y-2 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.5rem * var(--tw-space-y-reverse))}.space-y-24 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(6rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(6rem * var(--tw-space-y-reverse))}.space-y-3 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.75rem * var(--tw-space-y-reverse))}.space-y-4 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem * var(--tw-space-y-reverse))}.space-y-5 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1.25rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1.25rem * var(--tw-space-y-reverse))}.space-y-6 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1.5rem * var(--tw-space-y-reverse))}.space-y-8 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(2rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(2rem * var(--tw-space-y-reverse))}.overflow-hidden{overflow:hidden}.overflow-x-auto{overflow-x:auto}.overflow-y-auto{overflow-y:auto}.scroll-smooth{scroll-behavior:smooth}.truncate{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.border{border-width:1px}.border-2{border-width:2px}.border-4{border-width:4px}.border-b-2{border-bottom-width:2px}.border-b-4{border-bottom-width:4px}.border-l-4{border-left-width:4px}.border-t-4{border-top-width:4px}.border-black{--tw-border-opacity:1;border-color:rgb(0 0 0 / var(--tw-border-opacity, 1))}.border-gray-700{--tw-border-opacity:1;border-color:rgb(55 65 81 / var(--tw-border-opacity, 1))}.border-gray-800{--tw-border-opacity:1;border-color:rgb(31 41 55 / var(--tw-border-opacity, 1))}.border-spider-cyan{--tw-border-opacity:1;border-color:rgb(0 240 255 / var(--tw-border-opacity, 1))}.border-spider-red{--tw-border-opacity:1;border-color:rgb(255 0 60 / var(--tw-border-opacity, 1))}.border-spider-yellow{--tw-border-opacity:1;border-color:rgb(255 230 0 / var(--tw-border-opacity, 1))}.bg-\[\#09090e\]\/90{background-color:rgb(9 9 14 / 0.9)}.bg-\[\#0d0e17\]{--tw-bg-opacity:1;background-color:rgb(13 14 23 / var(--tw-bg-opacity, 1))}.bg-black{--tw-bg-opacity:1;background-color:rgb(0 0 0 / var(--tw-bg-opacity, 1))}.bg-black\/60{background-color:rgb(0 0 0 / 0.6)}.bg-black\/80{background-color:rgb(0 0 0 / 0.8)}.bg-black\/85{background-color:rgb(0 0 0 / 0.85)}.bg-blue-500{--tw-bg-opacity:1;background-color:rgb(59 130 246 / var(--tw-bg-opacity, 1))}.bg-emerald-400{--tw-bg-opacity:1;background-color:rgb(52 211 153 / var(--tw-bg-opacity, 1))}.bg-orange-500{--tw-bg-opacity:1;background-color:rgb(249 115 22 / var(--tw-bg-opacity, 1))}.bg-pink-500{--tw-bg-opacity:1;background-color:rgb(236 72 153 / var(--tw-bg-opacity, 1))}.bg-purple-400{--tw-bg-opacity:1;background-color:rgb(192 132 252 / var(--tw-bg-opacity, 1))}.bg-sky-300{--tw-bg-opacity:1;background-color:rgb(125 211 252 / var(--tw-bg-opacity, 1))}.bg-sky-400{--tw-bg-opacity:1;background-color:rgb(56 189 248 / var(--tw-bg-opacity, 1))}.bg-spider-cyan{--tw-bg-opacity:1;background-color:rgb(0 240 255 / var(--tw-bg-opacity, 1))}.bg-spider-panel{--tw-bg-opacity:1;background-color:rgb(18 19 31 / var(--tw-bg-opacity, 1))}.bg-spider-red{--tw-bg-opacity:1;background-color:rgb(255 0 60 / var(--tw-bg-opacity, 1))}.bg-spider-red\/30{background-color:rgb(255 0 60 / 0.3)}.bg-spider-yellow{--tw-bg-opacity:1;background-color:rgb(255 230 0 / var(--tw-bg-opacity, 1))}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.bg-gradient-to-br{background-image:linear-gradient(to bottom right, var(--tw-gradient-stops))}.bg-gradient-to-r{background-image:linear-gradient(to right, var(--tw-gradient-stops))}.bg-gradient-to-tr{background-image:linear-gradient(to top right, var(--tw-gradient-stops))}.from-\[\#12131f\]{--tw-gradient-from:#12131f var(--tw-gradient-from-position);--tw-gradient-to:rgb(18 19 31 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-\[\#1a103c\]{--tw-gradient-from:#1a103c var(--tw-gradient-from-position);--tw-gradient-to:rgb(26 16 60 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-black{--tw-gradient-from:#000 var(--tw-gradient-from-position);--tw-gradient-to:rgb(0 0 0 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-spider-cyan{--tw-gradient-from:#00f0ff var(--tw-gradient-from-position);--tw-gradient-to:rgb(0 240 255 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-spider-red{--tw-gradient-from:#ff003c var(--tw-gradient-from-position);--tw-gradient-to:rgb(255 0 60 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.via-\[\#19102c\]{--tw-gradient-to:rgb(25 16 44 / 0)  var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), #19102c var(--tw-gradient-via-position), var(--tw-gradient-to)}.via-\[\#ff003c\]\/30{--tw-gradient-to:rgb(255 0 60 / 0)  var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), rgb(255 0 60 / 0.3) var(--tw-gradient-via-position), var(--tw-gradient-to)}.via-indigo-950{--tw-gradient-to:rgb(30 27 75 / 0)  var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), #1e1b4b var(--tw-gradient-via-position), var(--tw-gradient-to)}.via-purple-900{--tw-gradient-to:rgb(88 28 135 / 0)  var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), #581c87 var(--tw-gradient-via-position), var(--tw-gradient-to)}.via-purple-950{--tw-gradient-to:rgb(59 7 100 / 0)  var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), #3b0764 var(--tw-gradient-via-position), var(--tw-gradient-to)}.via-slate-800{--tw-gradient-to:rgb(30 41 59 / 0)  var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), #1e293b var(--tw-gradient-via-position), var(--tw-gradient-to)}.to-\[\#00f0ff\]\/30{--tw-gradient-to:rgb(0 240 255 / 0.3) var(--tw-gradient-to-position)}.to-\[\#09090e\]{--tw-gradient-to:#09090e var(--tw-gradient-to-position)}.to-blue-500{--tw-gradient-to:#3b82f6 var(--tw-gradient-to-position)}.to-pink-600{--tw-gradient-to:#db2777 var(--tw-gradient-to-position)}.to-spider-cyan{--tw-gradient-to:#00f0ff var(--tw-gradient-to-position)}.to-spider-cyan\/30{--tw-gradient-to:rgb(0 240 255 / 0.3) var(--tw-gradient-to-position)}.to-spider-red\/40{--tw-gradient-to:rgb(255 0 60 / 0.4) var(--tw-gradient-to-position)}.to-spider-yellow\/30{--tw-gradient-to:rgb(255 230 0 / 0.3) var(--tw-gradient-to-position)}.stroke-cyan-400{stroke:#22d3ee}.object-cover{object-fit:cover}.object-top{object-position:top}.p-0\.5{padding:0.125rem}.p-1{padding:0.25rem}.p-2{padding:0.5rem}.p-4{padding:1rem}.p-5{padding:1.25rem}.p-6{padding:1.5rem}.p-8{padding:2rem}.px-1\.5{padding-left:0.375rem;padding-right:0.375rem}.px-2{padding-left:0.5rem;padding-right:0.5rem}.px-2\.5{padding-left:0.625rem;padding-right:0.625rem}.px-3{padding-left:0.75rem;padding-right:0.75rem}.px-3\.5{padding-left:0.875rem;padding-right:0.875rem}.px-4{padding-left:1rem;padding-right:1rem}.px-5{padding-left:1.25rem;padding-right:1.25rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.px-7{padding-left:1.75rem;padding-right:1.75rem}.py-0\.5{padding-top:0.125rem;padding-bottom:0.125rem}.py-1{padding-top:0.25rem;padding-bottom:0.25rem}.py-1\.5{padding-top:0.375rem;padding-bottom:0.375rem}.py-10{padding-top:2.5rem;padding-bottom:2.5rem}.py-2{padding-top:0.5rem;padding-bottom:0.5rem}.py-2\.5{padding-top:0.625rem;padding-bottom:0.625rem}.py-3{padding-top:0.75rem;padding-bottom:0.75rem}.py-3\.5{padding-top:0.875rem;padding-bottom:0.875rem}.py-4{padding-top:1rem;padding-bottom:1rem}.py-8{padding-top:2rem;padding-bottom:2rem}.pb-12{padding-bottom:3rem}.pb-4{padding-bottom:1rem}.pb-6{padding-bottom:1.5rem}.pl-12{padding-left:3rem}.pt-1{padding-top:0.25rem}.pt-2{padding-top:0.5rem}.pt-4{padding-top:1rem}.text-left{text-align:left}.text-center{text-align:center}.font-sans{font-family:"Space Grotesk", sans-serif}.font-comic{font-family:"Bangers", cursive}.font-mono{font-family:"JetBrains Mono", monospace}.text-2xl{font-size:1.5rem;line-height:2rem}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-4xl{font-size:2.25rem;line-height:2.5rem}.text-5xl{font-size:3rem;line-height:1}.text-\[10px\]{font-size:10px}.text-\[11px\]{font-size:11px}.text-base{font-size:1rem;line-height:1.5rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:0.75rem;line-height:1rem}.font-bold{font-weight:700}.font-extrabold{font-weight:800}.uppercase{text-transform:uppercase}.leading-\[0\.95\]{line-height:0.95}.leading-none{line-height:1}.leading-relaxed{line-height:1.625}.leading-tight{line-height:1.25}.tracking-wide{letter-spacing:0.025em}.tracking-wider{letter-spacing:0.05em}.tracking-widest{letter-spacing:0.1em}.text-black{--tw-text-opacity:1;color:rgb(0 0 0 / var(--tw-text-opacity, 1))}.text-cyan-300{--tw-text-opacity:1;color:rgb(103 232 249 / var(--tw-text-opacity, 1))}.text-gray-200{--tw-text-opacity:1;color:rgb(229 231 235 / var(--tw-text-opacity, 1))}.text-gray-300{--tw-text-opacity:1;color:rgb(209 213 219 / var(--tw-text-opacity, 1))}.text-gray-400{--tw-text-opacity:1;color:rgb(156 163 175 / var(--tw-text-opacity, 1))}.text-spider-cyan{--tw-text-opacity:1;color:rgb(0 240 255 / var(--tw-text-opacity, 1))}.text-spider-magenta{--tw-text-opacity:1;color:rgb(255 0 127 / var(--tw-text-opacity, 1))}.text-spider-red{--tw-text-opacity:1;color:rgb(255 0 60 / var(--tw-text-opacity, 1))}.text-spider-yellow{--tw-text-opacity:1;color:rgb(255 230 0 / var(--tw-text-opacity, 1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.opacity-15{opacity:0.15}.shadow-\[2px_2px_0px_\#000\]{--tw-shadow:2px 2px 0px #000;--tw-shadow-colored:2px 2px 0px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-\[3px_3px_0px_\#000\]{--tw-shadow:3px 3px 0px #000;--tw-shadow-colored:3px 3px 0px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-\[3px_3px_0px_\#00f0ff\]{--tw-shadow:3px 3px 0px #00f0ff;--tw-shadow-colored:3px 3px 0px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-\[5px_5px_0px_\#000\]{--tw-shadow:5px 5px 0px #000;--tw-shadow-colored:5px 5px 0px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-\[5px_5px_0px_\#ffe600\]{--tw-shadow:5px 5px 0px #ffe600;--tw-shadow-colored:5px 5px 0px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-\[6px_6px_0px_\#ff003c\]{--tw-shadow:6px 6px 0px #ff003c;--tw-shadow-colored:6px 6px 0px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.backdrop-blur-md{--tw-backdrop-blur:blur(12px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.backdrop-blur-sm{--tw-backdrop-blur:blur(4px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.transition-all{transition-property:all;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-colors{transition-property:color, background-color, border-color, fill, stroke, -webkit-text-decoration-color;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, -webkit-text-decoration-color;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-transform{transition-property:transform;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.duration-300{transition-duration:300ms}.duration-500{transition-duration:500ms}.selection\:bg-spider-yellow *::selection{--tw-bg-opacity:1;background-color:rgb(255 230 0 / var(--tw-bg-opacity, 1))}.selection\:text-black *::selection{--tw-text-opacity:1;color:rgb(0 0 0 / var(--tw-text-opacity, 1))}.selection\:bg-spider-yellow::selection{--tw-bg-opacity:1;background-color:rgb(255 230 0 / var(--tw-bg-opacity, 1))}.selection\:text-black::selection{--tw-text-opacity:1;color:rgb(0 0 0 / var(--tw-text-opacity, 1))}.before\:absolute::before{content:var(--tw-content);position:absolute}.before\:bottom-3::before{content:var(--tw-content);bottom:0.75rem}.before\:left-4::before{content:var(--tw-content);left:1rem}.before\:top-3::before{content:var(--tw-content);top:0.75rem}.before\:w-1::before{content:var(--tw-content);width:0.25rem}.before\:bg-spider-red::before{content:var(--tw-content);--tw-bg-opacity:1;background-color:rgb(255 0 60 / var(--tw-bg-opacity, 1))}.hover\:bg-black:hover{--tw-bg-opacity:1;background-color:rgb(0 0 0 / var(--tw-bg-opacity, 1))}.hover\:bg-spider-cyan:hover{--tw-bg-opacity:1;background-color:rgb(0 240 255 / var(--tw-bg-opacity, 1))}.hover\:bg-spider-red:hover{--tw-bg-opacity:1;background-color:rgb(255 0 60 / var(--tw-bg-opacity, 1))}.hover\:bg-spider-yellow:hover{--tw-bg-opacity:1;background-color:rgb(255 230 0 / var(--tw-bg-opacity, 1))}.hover\:bg-white:hover{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.hover\:text-black:hover{--tw-text-opacity:1;color:rgb(0 0 0 / var(--tw-text-opacity, 1))}.hover\:text-spider-cyan:hover{--tw-text-opacity:1;color:rgb(0 240 255 / var(--tw-text-opacity, 1))}.hover\:text-spider-red:hover{--tw-text-opacity:1;color:rgb(255 0 60 / var(--tw-text-opacity, 1))}.hover\:text-spider-yellow:hover{--tw-text-opacity:1;color:rgb(255 230 0 / var(--tw-text-opacity, 1))}.hover\:underline:hover{-webkit-text-decoration-line:underline;text-decoration-line:underline}.group:hover .group-hover\:rotate-12{--tw-rotate:12deg;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.group:hover .group-hover\:scale-105{--tw-scale-x:1.05;--tw-scale-y:1.05;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.group:hover .group-hover\:text-spider-yellow{--tw-text-opacity:1;color:rgb(255 230 0 / var(--tw-text-opacity, 1))}@media (min-width: 640px){.sm\:col-span-5{grid-column:span 5 / span 5}.sm\:col-span-7{grid-column:span 7 / span 7}.sm\:inline{display:inline}.sm\:grid-cols-12{grid-template-columns:repeat(12, minmax(0, 1fr))}.sm\:flex-row{flex-direction:row}.sm\:items-end{align-items:flex-end}.sm\:p-10{padding:2.5rem}.sm\:p-5{padding:1.25rem}.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:text-5xl{font-size:3rem;line-height:1}.sm\:text-6xl{font-size:3.75rem;line-height:1}.sm\:text-7xl{font-size:4.5rem;line-height:1}.sm\:text-base{font-size:1rem;line-height:1.5rem}.sm\:text-lg{font-size:1.125rem;line-height:1.75rem}.sm\:text-sm{font-size:0.875rem;line-height:1.25rem}}@media (min-width: 768px){.md\:flex{display:flex}.md\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.md\:flex-row{flex-direction:row}.md\:items-end{align-items:flex-end}}@media (min-width: 1024px){.lg\:col-span-5{grid-column:span 5 / span 5}.lg\:col-span-7{grid-column:span 7 / span 7}.lg\:grid-cols-12{grid-template-columns:repeat(12, minmax(0, 1fr))}.lg\:grid-cols-4{grid-template-columns:repeat(4, minmax(0, 1fr))}}</style></head>
+<body class="bg-halftone font-sans selection:bg-spider-yellow selection:text-black">
+
+    <!-- Fondo de Telaraña SVG Decorativa Fija -->
+    <div class="fixed top-0 right-0 w-96 h-96 pointer-events-none opacity-15 z-0 overflow-hidden">
+        <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full stroke-cyan-400">
+            <path d="M200 0 L0 200 M200 0 L50 200 M200 0 L120 200 M200 0 L0 120 M200 0 L0 50" stroke-width="1.5"></path>
+            <path d="M170 0 C170 20 180 30 200 30" stroke-width="1.5"></path>
+            <path d="M140 0 C140 40 160 60 200 60" stroke-width="1.5"></path>
+            <path d="M100 0 C100 65 135 100 200 100" stroke-width="1.5"></path>
+            <path d="M50 0 C50 100 100 150 200 150" stroke-width="1.5"></path>
+        </svg>
     </div>
-  </section>
 
-  <section id="proyectos" class="max-w-5xl mx-auto px-4 py-20">
-    <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center text-[#E2E8F0]">
-      Proyectos <span class="text-[#8b7ed8]">Destacados</span>
-    </h2>
-    
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-      
-      <article class="bg-[#231f32] rounded-xl border border-[#37314d] overflow-hidden hover:border-[#8b7ed8] transition-colors duration-300">
-        <div class="h-48 border-b border-[#37314d] overflow-hidden relative">
-          <img 
-            src="/portfolioastro1/proyecto1.png" 
-            alt="Captura de mi proyecto" 
-            class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-          />
+    <!-- Notificación Flotante Estilo Cómic ("POW! ¡Copiado!") -->
+    <div id="comic-toast" class="fixed bottom-6 right-6 z-50 hidden transform transition-all duration-300">
+        <div class="comic-caption px-6 py-3 font-comic text-2xl tracking-wider flex items-center gap-3 bg-spider-yellow text-black border-4 border-black">
+            <span class="bg-spider-red text-white px-2 py-0.5 border-2 border-black rotate-[-6deg]">¡THWIP!</span>
+            <span id="comic-toast-text">¡Copiado al portapapeles!</span>
         </div>
-        
-        <div class="p-6">
-          <h3 class="text-2xl font-bold mb-2 text-[#E2E8F0]">Gestor de Tareas</h3>
-          <p class="text-[#a09eb5] mb-6 leading-relaxed">
-            Gestor de tareas sencillo.
-          </p>
-          
-          <div class="flex flex-wrap gap-2 mb-8">
-            <span class="px-3 py-1 bg-[#13111C] border border-[#37314d] rounded-full text-xs font-semibold text-[#8b7ed8]">HTML5</span>
-            <span class="px-3 py-1 bg-[#13111C] border border-[#37314d] rounded-full text-xs font-semibold text-[#8b7ed8]">CSS3</span>
-            <span class="px-3 py-1 bg-[#13111C] border border-[#37314d] rounded-full text-xs font-semibold text-[#8b7ed8]">JavaScript</span>
-          </div>
-          
-          <div class="flex gap-4">
-            <a href="#" target="_blank" class="flex-1 text-center bg-[#4a3f75] text-[#c4c0db] py-2.5 rounded-lg font-medium hover:bg-[#3b325e] transition-colors hidden">
-              Ver Demo
-            </a>
-            <a href="https://github.com/Juandi01/Cliente-25-26/tree/main/Cliente%2025-26/Practica4" target="_blank" class="flex-1 text-center bg-[#1e1b29] border border-[#37314d] text-[#9a96b3] py-2.5 rounded-lg font-medium hover:bg-[#2a2638] hover:text-[#c4c0db] transition-colors">
-              Código
-            </a>
-          </div>
-        </div>
-      </article>
-
-      <article class="bg-[#231f32] rounded-xl border border-[#37314d] overflow-hidden hover:border-[#8b7ed8] transition-colors duration-300">
-        <div class="h-48 border-b border-[#37314d] overflow-hidden relative">
-          <img 
-            src="/portfolioastro1/proyecto2.png" 
-            alt="Captura de mi proyecto" 
-            class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-          />
-        </div>
-        <div class="p-6">
-          <h3 class="text-2xl font-bold mb-2 text-[#E2E8F0]">Proyecto Blog con Symfony</h3>
-          <p class="text-[#a09eb5] mb-6 leading-relaxed">
-            Diseño responsive creado desde cero para un, blog enfocado en accesibilidad y rendimiento web.
-          </p>
-          <div class="flex flex-wrap gap-2 mb-8">
-            <span class="px-3 py-1 bg-[#13111C] border border-[#37314d] rounded-full text-xs font-semibold text-[#8b7ed8]">PHP</span>
-            <span class="px-3 py-1 bg-[#13111C] border border-[#37314d] rounded-full text-xs font-semibold text-[#8b7ed8]">Symfony</span>
-            <span class="px-3 py-1 bg-[#13111C] border border-[#37314d] rounded-full text-xs font-semibold text-[#8b7ed8]">Tailwind</span>
-          </div>
-          <div class="flex gap-4">
-            <a href="#" target="_blank" class="flex-1 text-center bg-[#4a3f75] text-[#c4c0db] py-2.5 rounded-lg font-medium hover:bg-[#3b325e] transition-colors hidden ">
-              Ver Demo
-            </a>
-            <a href="https://github.com/Juandi01/Cliente-25-26/tree/main/Cliente%2025-26/Practica4" target="_blank" class="flex-1 text-center bg-[#1e1b29] border border-[#37314d] text-[#9a96b3] py-2.5 rounded-lg font-medium hover:bg-[#2a2638] hover:text-[#c4c0db] transition-colors">
-              Código
-            </a>
-          </div>
-        </div>
-      </article>
-
-      <article class="bg-[#231f32] rounded-xl border border-[#37314d] overflow-hidden hover:border-[#8b7ed8] transition-colors duration-300">
-        <div class="h-48 border-b border-[#37314d] overflow-hidden relative">
-          <img 
-            src="/portfolioastro1/proyecto3.png" 
-            alt="Captura de ZenPaw 2.0" 
-            class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-          />
-        </div>
-        <div class="p-6">
-          <h3 class="text-2xl font-bold mb-2 text-[#E2E8F0]">ZenPaw 2.0</h3>
-          <p class="text-[#a09eb5] mb-6 leading-relaxed">
-            Blog ZenPaw mejorado. Una aplicación web desarrollada con tecnologías modernas.
-          </p>
-          <div class="flex flex-wrap gap-2 mb-8">
-            <span class="px-3 py-1 bg-[#13111C] border border-[#37314d] rounded-full text-xs font-semibold text-[#8b7ed8]">PHP</span>
-            <span class="px-3 py-1 bg-[#13111C] border border-[#37314d] rounded-full text-xs font-semibold text-[#8b7ed8]">Symfony</span>
-            <span class="px-3 py-1 bg-[#13111C] border border-[#37314d] rounded-full text-xs font-semibold text-[#8b7ed8]">Tailwind</span>
-          </div>
-          <div class="flex gap-4">
-            <a href="#" target="_blank" class="flex-1 text-center bg-[#4a3f75] text-[#c4c0db] py-2.5 rounded-lg font-medium hover:bg-[#3b325e] transition-colors hidden">
-              Ver Demo
-            </a>
-            <a href="https://github.com/Juandi01/ZenPaw2.0.git" target="_blank" class="flex-1 text-center bg-[#1e1b29] border border-[#37314d] text-[#9a96b3] py-2.5 rounded-lg font-medium hover:bg-[#2a2638] hover:text-[#c4c0db] transition-colors">
-              Código
-            </a>
-          </div>
-        </div>
-      </article>
-
-      <article class="bg-[#231f32] rounded-xl border border-[#37314d] overflow-hidden hover:border-[#8b7ed8] transition-colors duration-300">
-        <div class="h-48 border-b border-[#37314d] overflow-hidden relative">
-          <img 
-            src="/portfolioastro1/proyecto4.png" 
-            alt="Captura de Landing Page Audi" 
-            class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-          />
-        </div>
-        <div class="p-6">
-          <h3 class="text-2xl font-bold mb-2 text-[#E2E8F0]">Landing Page Audi</h3>
-          <p class="text-[#a09eb5] mb-6 leading-relaxed">
-            Landing page promocional moderna y responsive para Audi.
-          </p>
-          <div class="flex flex-wrap gap-2 mb-8">
-            <span class="px-3 py-1 bg-[#13111C] border border-[#37314d] rounded-full text-xs font-semibold text-[#8b7ed8]">HTML5</span>
-            <span class="px-3 py-1 bg-[#13111C] border border-[#37314d] rounded-full text-xs font-semibold text-[#8b7ed8]">Tailwind CSS</span>
-            <span class="px-3 py-1 bg-[#13111C] border border-[#37314d] rounded-full text-xs font-semibold text-[#8b7ed8]">JavaScript</span>
-          </div>
-          <div class="flex gap-4">
-            <a href="#" target="_blank" class="flex-1 text-center bg-[#4a3f75] text-[#c4c0db] py-2.5 rounded-lg font-medium hover:bg-[#3b325e] transition-colors hidden">
-              Ver Demo
-            </a>
-            <a href="https://github.com/Juandi01/LandingAudi.git" target="_blank" class="flex-1 text-center bg-[#1e1b29] border border-[#37314d] text-[#9a96b3] py-2.5 rounded-lg font-medium hover:bg-[#2a2638] hover:text-[#c4c0db] transition-colors">
-              Código
-            </a>
-          </div>
-        </div>
-      </article>
-
     </div>
-  </section>
 
-</DefaultLayout>
+    <!-- NAVBAR -->
+    <header class="sticky top-0 z-40 backdrop-blur-md bg-[#09090e]/90 border-b-4 border-black">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-3">
+            <!-- Logo / Universo -->
+            <a href="#inicio" class="flex items-center gap-2.5 group">
+                <div class="w-10 h-10 bg-spider-red border-2 border-black flex items-center justify-center shadow-[3px_3px_0px_#00f0ff] group-hover:rotate-12 transition-transform">
+                    <!-- Icono Araña SVG -->
+                    <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 4a2 2 0 100 4 2 2 0 000-4zm0 5c-2.21 0-4 1.79-4 4v2c0 2.21 1.79 4 4 4s4-1.79 4-4v-2c0-2.21-1.79-4-4-4zm-4.5 1.2L4 7M7.5 13L3 13M7.5 15.8L4 19M16.5 10.2L20 7M16.5 13L21 13M16.5 15.8L20 19" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+                    </svg>
+                </div>
+                <div>
+                    <span class="font-comic text-2xl tracking-wider text-white chromatic-text-sm block leading-none">JUANDI DELGADO</span>
+                    <span id="dimension-badge" class="font-mono text-[10px] bg-spider-yellow text-black px-1.5 py-0.5 font-extrabold uppercase">EARTH-1610 // GRANADA</span>
+                </div>
+            </a>
+
+            <!-- Enlaces de Navegación -->
+            <nav class="hidden md:flex items-center gap-6 font-mono text-sm font-bold">
+                <a href="#sobre-mi" class="hover:text-spider-yellow transition-colors">01.ORIGEN</a>
+                <a href="#habilidades" class="hover:text-spider-cyan transition-colors">02.ARSENAL</a>
+                <a href="#proyectos" class="hover:text-spider-red transition-colors">03.PROYECTOS</a>
+                <a href="#experiencia" class="hover:text-spider-yellow transition-colors">04.MISIONES</a>
+                <a href="#contacto" class="hover:text-spider-cyan transition-colors">05.SEÑAL</a>
+            </nav>
+
+            <!-- Botones de Acción: Cambio de Universo + Exportar Astro -->
+            <div class="flex items-center gap-2.5">
+                <button id="dimension-btn" onclick="toggleDimension()" class="spider-btn bg-spider-panel text-spider-cyan px-3 py-1.5 font-mono text-xs font-bold flex items-center gap-1.5 hover:bg-black" title="Cambiar estilo visual de dimensión">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="Sparkles" aria-hidden="true" class="lucide lucide-Sparkles w-4 h-4 text-spider-magenta"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"></path><path d="M20 2v4"></path><path d="M22 4h-4"></path><circle cx="4" cy="20" r="2"></circle></svg>
+                    <span class="hidden sm:inline">Multiverso</span>
+                </button>
+                <button onclick="openAstroModal()" class="spider-btn bg-spider-yellow text-black px-3.5 py-1.5 font-mono text-xs font-extrabold uppercase flex items-center gap-1.5">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="Code" aria-hidden="true" class="lucide lucide-Code w-4 h-4"><path d="m16 18 6-6-6-6"></path><path d="m8 6-6 6 6 6"></path></svg>
+                    <span>⚡ Código Astro</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main id="main-container" class="max-w-6xl mx-auto px-4 sm:px-6 py-10 space-y-24 relative z-10">
+
+        <!-- 1. HERO / SOBRE MÍ ("EL ORIGEN") -->
+        <section id="inicio" class="pt-4">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                
+                <!-- Columna Izquierda: Presentación Estilo Viñeta Principal -->
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="inline-block comic-caption px-4 py-1 font-mono text-xs sm:text-sm font-extrabold uppercase">
+                        📍 GRANADA, ESPAÑA // LISTO PARA NUEVAS MISIONES
+                    </div>
+
+                    <div class="space-y-2">
+                        <p class="font-mono text-spider-cyan text-sm sm:text-base font-bold tracking-widest uppercase">
+                            // DESARROLLADOR WEB FULL-STACK &amp; IA
+                        </p>
+                        <h1 class="font-comic text-5xl sm:text-7xl leading-[0.95] uppercase chromatic-text glitch-hover cursor-default">
+                            JUAN DIEGO <br>
+                            <span class="text-spider-yellow">DELGADO MORENTE</span>
+                        </h1>
+                    </div>
+
+                    <!-- Bio del CV en formato recuadro de cómic -->
+                    <div id="sobre-mi" class="comic-panel p-6 relative">
+                        <span class="absolute -top-3.5 right-4 bg-spider-red text-white font-mono text-xs font-bold px-2.5 py-0.5 border-2 border-black">
+                            EXPEDIENTE #2026
+                        </span>
+                        <p class="text-gray-200 text-base sm:text-lg leading-relaxed">
+                            Desarrollador web con experiencia práctica en <strong class="text-spider-yellow font-bold">PHP y Symfony</strong>, especializado en crear interfaces modernas y ultrarrápidas con <strong class="text-spider-cyan font-bold">Tailwind CSS y Astro</strong>. 
+                        </p>
+                        <p class="text-gray-300 text-base sm:text-lg leading-relaxed mt-3">
+                            Integro soluciones con <strong class="bg-spider-red/30 border border-spider-red text-white px-1.5 py-0.5 font-mono text-sm">Inteligencia Artificial</strong> para optimizar procesos y generar productos de valor. Combino una base técnica sólida con gran capacidad de comunicación, resolución de problemas y experiencia real en trato directo con clientes.
+                        </p>
+                    </div>
+
+                    <!-- Botones con animación de "Sentido Arácnido" -->
+                    <div class="flex flex-wrap items-center gap-4 pt-2">
+                        <div class="relative sense-trigger">
+                            <!-- Ondas de Sentido Arácnido SVG -->
+                            <svg class="spider-sense-waves absolute -top-6 -left-6 w-12 h-12 text-spider-yellow" viewBox="0 0 50 50" fill="none">
+                                <path d="M25 5 L20 18 L30 22 L18 35" stroke="currentColor" stroke-width="3" stroke-linecap="round"></path>
+                                <path d="M8 15 L16 24 L10 30 L20 40" stroke="#ff003c" stroke-width="3" stroke-linecap="round"></path>
+                            </svg>
+                            <a href="#proyectos" class="spider-btn bg-spider-red text-white font-comic text-2xl tracking-wider px-7 py-3 inline-flex items-center gap-2">
+                                <span>VER MIS PROYECTOS</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="ArrowDownRight" aria-hidden="true" class="lucide lucide-ArrowDownRight w-6 h-6"><path d="m7 7 10 10"></path><path d="M17 7v10H7"></path></svg>
+                            </a>
+                        </div>
+
+                        <a href="https://github.com/Juandi01" target="_blank" rel="noopener noreferrer" class="spider-btn bg-white text-black font-mono font-extrabold text-sm px-5 py-3.5 inline-flex items-center gap-2 hover:bg-spider-yellow">
+                            <i data-lucide="Github" class="w-5 h-5"></i>
+                            <span>GitHub</span>
+                        </a>
+
+                        <a href="https://linkedin.com/in/juandi-delgado-6240b2321" target="_blank" rel="noopener noreferrer" class="spider-btn bg-spider-panel text-spider-cyan font-mono font-extrabold text-sm px-5 py-3.5 inline-flex items-center gap-2 border-spider-cyan">
+                            <i data-lucide="Linkedin" class="w-5 h-5"></i>
+                            <span>LinkedIn</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Columna Derecha: Tarjeta de Héroe / Estadísticas del Multiverso -->
+                <div class="lg:col-span-5">
+                    <div class="comic-panel-cyan p-6 relative overflow-hidden group">
+                        <div class="halftone-overlay absolute inset-0 pointer-events-none"></div>
+                        
+                        <!-- Cabecera de Ficha -->
+                        <div class="flex items-center justify-between border-b-2 border-gray-800 pb-4 mb-5 relative z-10">
+                            <div>
+                                <span class="font-mono text-xs text-spider-yellow uppercase font-bold block">ID DE DESARROLLADOR</span>
+                                <h2 class="font-comic text-3xl tracking-wide text-white">SPIDER-DEV // JUANDI</h2>
+                            </div>
+                            <span class="bg-spider-cyan text-black font-mono font-extrabold text-xs px-2.5 py-1 border-2 border-black rotate-3">
+                                NIVEL: DAW PRO
+                            </span>
+                        </div>
+
+                        <!-- Avatar Estilizado Cómic + Datos Rápidos -->
+                        <div class="grid grid-cols-1 sm:grid-cols-12 gap-4 items-center mb-6 relative z-10">
+                            <div class="sm:col-span-5 flex justify-center">
+                                <div class="w-32 h-32 bg-gradient-to-br from-spider-red via-purple-900 to-spider-cyan p-1 border-4 border-black shadow-[5px_5px_0px_#ffe600] relative">
+                                    <!-- Ilustración Vectorial Estilo Miles/Peter Tech -->
+                                    <svg viewBox="0 0 100 100" class="w-full h-full bg-[#0d0e17]">
+                                        <circle cx="50" cy="50" r="45" fill="none" stroke="#ff003c" stroke-width="1" stroke-dasharray="3 3"></circle>
+                                        <!-- Máscara Spider-Verse estilizada con gafas tech -->
+                                        <ellipse cx="50" cy="52" rx="28" ry="34" fill="#ff003c" stroke="#000" stroke-width="3"></ellipse>
+                                        <!-- Líneas de red de la máscara -->
+                                        <path d="M50 18 L50 86 M22 52 L78 52 M30 28 L70 76 M70 28 L30 76" stroke="#000" stroke-width="1.5" opacity="0.45"></path>
+                                        <!-- Ojos expresivos estilo cómic -->
+                                        <path d="M27 44 Q38 35 46 49 Q34 55 27 44 Z" fill="#fff" stroke="#000" stroke-width="3.5"></path>
+                                        <path d="M73 44 Q62 35 54 49 Q66 55 73 44 Z" fill="#fff" stroke="#000" stroke-width="3.5"></path>
+                                        <!-- Reflejo cian HUD -->
+                                        <path d="M31 45 L41 47" stroke="#00f0ff" stroke-width="2"></path>
+                                        <path d="M69 45 L59 47" stroke="#00f0ff" stroke-width="2"></path>
+                                    </svg>
+                                    <span class="absolute -bottom-2 -right-2 bg-black text-spider-yellow font-mono text-[10px] font-bold px-1.5 py-0.5 border border-spider-yellow">
+                                        AI READY
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="sm:col-span-7 space-y-2 font-mono text-xs">
+                                <div class="bg-black/60 p-2 border-l-4 border-spider-red">
+                                    <span class="text-gray-400 block">ESPECIALIDAD:</span>
+                                    <span class="text-white font-bold">PHP, Symfony, Astro &amp; Tailwind</span>
+                                </div>
+                                <div class="bg-black/60 p-2 border-l-4 border-spider-cyan">
+                                    <span class="text-gray-400 block">FORMACIÓN:</span>
+                                    <span class="text-white font-bold">Grado Superior DAW (Granada)</span>
+                                </div>
+                                <div class="bg-black/60 p-2 border-l-4 border-spider-yellow">
+                                    <span class="text-gray-400 block">IDIOMAS:</span>
+                                    <span class="text-white font-bold">Español (Nativo) · Inglés (B2/Medio-Alto)</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Barras de Poder (Skills) -->
+                        <div class="space-y-3 font-mono text-xs relative z-10">
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="font-bold text-spider-cyan">FRONTEND (ASTRO / TAILWIND / JS)</span>
+                                    <span class="text-spider-yellow font-bold">95%</span>
+                                </div>
+                                <div class="w-full h-3 bg-black border-2 border-black p-0.5">
+                                    <div class="h-full bg-gradient-to-r from-spider-cyan to-blue-500 w-[95%]"></div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="font-bold text-spider-red">BACKEND (PHP / SYMFONY / PYTHON / SQL)</span>
+                                    <span class="text-spider-yellow font-bold">90%</span>
+                                </div>
+                                <div class="w-full h-3 bg-black border-2 border-black p-0.5">
+                                    <div class="h-full bg-gradient-to-r from-spider-red to-pink-600 w-[90%]"></div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="font-bold text-spider-yellow">INTEGRACIÓN IA &amp; RESOLUCIÓN PROBLEMAS</span>
+                                    <span class="text-spider-yellow font-bold">92%</span>
+                                </div>
+                                <div class="w-full h-3 bg-black border-2 border-black p-0.5">
+                                    <div class="h-full bg-spider-yellow w-[92%]"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 2. ARSENAL TECNOLÓGICO ("LANZAREDES Y GADGETS") -->
+        <section id="habilidades" class="space-y-8">
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b-4 border-black pb-4">
+                <div>
+                    <span class="comic-caption px-3 py-0.5 font-mono text-xs font-extrabold uppercase inline-block mb-2">
+                        CAPÍTULO 02 // EQUIPAMIENTO TÉCNICO
+                    </span>
+                    <h2 class="font-comic text-4xl sm:text-5xl uppercase chromatic-text">
+                        ARSENAL TECNOLÓGICO &amp; HABILIDADES
+                    </h2>
+                </div>
+                <p class="font-mono text-xs text-gray-400 max-w-xs">
+                    Herramientas digitales y competencias clave probadas en entornos reales de desarrollo.
+                </p>
+            </div>
+
+            <!-- Grid de Viñetas de Habilidades -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <!-- Panel 1: Backend -->
+                <div class="comic-panel p-5 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="font-comic text-2xl text-spider-red tracking-wide">01. BACKEND CORE</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="Server" aria-hidden="true" class="lucide lucide-Server w-6 h-6 text-spider-red"><rect width="20" height="8" x="2" y="2" rx="2" ry="2"></rect><rect width="20" height="8" x="2" y="14" rx="2" ry="2"></rect><line x1="6" x2="6.01" y1="6" y2="6"></line><line x1="6" x2="6.01" y1="18" y2="18"></line></svg>
+                        </div>
+                        <p class="text-xs text-gray-300 mb-4">
+                            Arquitectura robusta de servidor, MVC, APIs y gestión segura de datos.
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap gap-2 font-mono text-xs font-bold">
+                        <span class="bg-spider-red text-white px-2.5 py-1 border-2 border-black">PHP</span>
+                        <span class="bg-white text-black px-2.5 py-1 border-2 border-black">Symfony</span>
+                        <span class="bg-spider-yellow text-black px-2.5 py-1 border-2 border-black">Python</span>
+                        <span class="bg-emerald-400 text-black px-2.5 py-1 border-2 border-black">Django</span>
+                        <span class="bg-sky-400 text-black px-2.5 py-1 border-2 border-black">MySQL / PDO</span>
+                    </div>
+                </div>
+
+                <!-- Panel 2: Frontend -->
+                <div class="comic-panel-cyan p-5 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="font-comic text-2xl text-spider-cyan tracking-wide">02. FRONTEND &amp; UI</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="Layout" aria-hidden="true" class="lucide lucide-Layout w-6 h-6 text-spider-cyan"><rect width="18" height="18" x="3" y="3" rx="2"></rect><path d="M3 9h18"></path><path d="M9 21V9"></path></svg>
+                        </div>
+                        <p class="text-xs text-gray-300 mb-4">
+                            Interfaces modernas, diseño responsive y alto rendimiento visual.
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap gap-2 font-mono text-xs font-bold">
+                        <span class="bg-spider-cyan text-black px-2.5 py-1 border-2 border-black">Astro</span>
+                        <span class="bg-sky-300 text-black px-2.5 py-1 border-2 border-black">Tailwind CSS</span>
+                        <span class="bg-spider-yellow text-black px-2.5 py-1 border-2 border-black">JavaScript</span>
+                        <span class="bg-purple-400 text-black px-2.5 py-1 border-2 border-black">Bootstrap</span>
+                        <span class="bg-white text-black px-2.5 py-1 border-2 border-black">HTML5 / CSS3</span>
+                    </div>
+                </div>
+
+                <!-- Panel 3: DevOps & Herramientas -->
+                <div class="comic-panel p-5 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="font-comic text-2xl text-spider-yellow tracking-wide">03. ENTORNOS &amp; DEVOPS</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="Terminal" aria-hidden="true" class="lucide lucide-Terminal w-6 h-6 text-spider-yellow"><path d="M12 19h8"></path><path d="m4 17 6-6-6-6"></path></svg>
+                        </div>
+                        <p class="text-xs text-gray-300 mb-4">
+                            Despliegue en contenedores, control de versiones y administración en Linux.
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap gap-2 font-mono text-xs font-bold">
+                        <span class="bg-orange-500 text-white px-2.5 py-1 border-2 border-black">Git / GitHub</span>
+                        <span class="bg-blue-500 text-white px-2.5 py-1 border-2 border-black">Docker</span>
+                        <span class="bg-spider-yellow text-black px-2.5 py-1 border-2 border-black">Linux (Ubuntu)</span>
+                        <span class="bg-white text-black px-2.5 py-1 border-2 border-black">Tomcat</span>
+                        <span class="bg-pink-500 text-white px-2.5 py-1 border-2 border-black">PhpStorm</span>
+                    </div>
+                </div>
+
+                <!-- Panel 4: IA & Soft Skills -->
+                <div class="comic-panel-cyan p-5 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="font-comic text-2xl text-spider-magenta tracking-wide">04. SUPERPODERES &amp; IA</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="Cpu" aria-hidden="true" class="lucide lucide-Cpu w-6 h-6 text-spider-magenta"><path d="M12 20v2"></path><path d="M12 2v2"></path><path d="M17 20v2"></path><path d="M17 2v2"></path><path d="M2 12h2"></path><path d="M2 17h2"></path><path d="M2 7h2"></path><path d="M20 12h2"></path><path d="M20 17h2"></path><path d="M20 7h2"></path><path d="M7 20v2"></path><path d="M7 2v2"></path><rect x="4" y="4" width="16" height="16" rx="2"></rect><rect x="8" y="8" width="8" height="8" rx="1"></rect></svg>
+                        </div>
+                        <p class="text-xs text-gray-300 mb-4">
+                            Optimización de flujos con IA y habilidades interpersonales de alto impacto.
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap gap-2 font-mono text-xs font-bold">
+                        <span class="bg-spider-red text-white px-2.5 py-1 border-2 border-black">Integración IA</span>
+                        <span class="bg-spider-cyan text-black px-2.5 py-1 border-2 border-black">Trato con Clientes</span>
+                        <span class="bg-white text-black px-2.5 py-1 border-2 border-black">Trabajo en Equipo</span>
+                        <span class="bg-spider-yellow text-black px-2.5 py-1 border-2 border-black">Adaptabilidad</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 3. PROYECTOS DESTACADOS ("EDICIÓN ESPECIAL DAILY BUGLE") -->
+        <section id="proyectos" class="space-y-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b-4 border-black pb-4">
+                <div>
+                    <div class="inline-flex items-center gap-2 bg-spider-red text-white font-mono text-xs font-extrabold px-3 py-1 border-2 border-black mb-2 shadow-[3px_3px_0px_#000]">
+                        <span>📰 THE DAILY BUGLE // EXCLUSIVA WEB</span>
+                    </div>
+                    <h2 class="font-comic text-4xl sm:text-6xl uppercase chromatic-text">
+                        PROYECTOS DESTACADOS
+                    </h2>
+                </div>
+
+                <!-- Filtros Interactivos de Proyectos -->
+                <div class="flex flex-wrap gap-2 font-mono text-xs font-bold">
+                    <button onclick="filterProjects('all')" data-filter="all" class="filter-btn spider-btn bg-spider-yellow text-black px-3.5 py-2">
+                        TODOS (4)
+                    </button>
+                    <button onclick="filterProjects('symfony')" data-filter="symfony" class="filter-btn spider-btn bg-spider-panel text-white px-3.5 py-2 hover:bg-spider-red">
+                        PHP &amp; SYMFONY
+                    </button>
+                    <button onclick="filterProjects('frontend')" data-filter="frontend" class="filter-btn spider-btn bg-spider-panel text-white px-3.5 py-2 hover:bg-spider-cyan hover:text-black">
+                        FRONTEND &amp; JS
+                    </button>
+                </div>
+            </div>
+
+                    <!-- Grid de Tarjetas de Proyectos -->
+            <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+                <!-- PROYECTO 1: ZenPaw 2.0 -->
+                <article class="project-card bugle-card flex flex-col justify-between overflow-hidden" data-category="symfony">
+                    <div>
+                        <!-- Cabecera estilo recorte de periódico/cómic -->
+                        <div class="bg-black px-4 py-2 border-b-2 border-black flex items-center justify-between font-mono text-xs">
+                            <span class="text-spider-yellow font-bold">EDICIÓN #01 // FULL-STACK</span>
+                            <span class="text-gray-400">SYMFONY + TAILWIND</span>
+                        </div>
+
+                        <!-- Ilustración/Preview del Proyecto con Fallback Automático -->
+                        <div class="relative h-52 bg-gradient-to-tr from-[#1a103c] via-[#ff003c]/30 to-[#00f0ff]/30 border-b-4 border-black overflow-hidden group">
+                            <img src="https://juandi01.github.io/portfolioastro1/proyecto3.png" alt="ZenPaw 2.0 Preview" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/800x450/12131f/00f0ff?text=ZenPaw+2.0+%7C+Symfony'">
+                            <div class="absolute top-3 left-3 bg-spider-yellow text-black font-comic text-lg px-3 py-0.5 border-2 border-black rotate-[-3deg] shadow-[3px_3px_0px_#000]">
+                                ¡NUEVA VERSIÓN!
+                            </div>
+                        </div>
+
+                        <!-- Cuerpo de la Tarjeta -->
+                        <div class="p-6 space-y-4">
+                            <h3 class="font-comic text-3xl tracking-wide text-white group-hover:text-spider-yellow">
+                                ZENPAW 2.0
+                            </h3>
+                            <p class="text-gray-300 text-sm leading-relaxed">
+                                Blog ZenPaw mejorado. Aplicación web completa desarrollada con arquitectura MVC en Symfony, estilizada con Tailwind CSS y pensada para ofrecer una experiencia fluida y escalable.
+                            </p>
+                            <div class="flex flex-wrap gap-2 font-mono text-xs font-bold pt-1">
+                                <span class="bg-spider-red text-white px-2.5 py-0.5 border border-black">PHP</span>
+                                <span class="bg-white text-black px-2.5 py-0.5 border border-black">Symfony</span>
+                                <span class="bg-spider-cyan text-black px-2.5 py-0.5 border border-black">Tailwind CSS</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="px-6 pb-6 pt-2">
+                        <a href="https://github.com/Juandi01/ZenPaw2.0.git" target="_blank" rel="noopener noreferrer" class="spider-btn w-full bg-spider-yellow text-black font-mono font-extrabold text-sm py-3 flex items-center justify-center gap-2 hover:bg-white">
+                            <i data-lucide="Github" class="w-4 h-4"></i>
+                            <span>EXPLORAR REPOSITORIO</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="ExternalLink" aria-hidden="true" class="lucide lucide-ExternalLink w-4 h-4"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- PROYECTO 2: Landing Page Audi -->
+                <article class="project-card bugle-card flex flex-col justify-between overflow-hidden" data-category="frontend">
+                    <div>
+                        <div class="bg-black px-4 py-2 border-b-2 border-black flex items-center justify-between font-mono text-xs">
+                            <span class="text-spider-cyan font-bold">EDICIÓN #02 // AUTOMOCIÓN UI</span>
+                            <span class="text-gray-400">TAILWIND + JS</span>
+                        </div>
+
+                        <div class="relative h-52 bg-gradient-to-tr from-black via-slate-800 to-spider-red/40 border-b-4 border-black overflow-hidden group">
+                            <img src="https://juandi01.github.io/portfolioastro1/proyecto4.png" alt="Landing Page Audi Preview" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/800x450/12131f/ff003c?text=Landing+Page+Audi'">
+                            <div class="absolute top-3 left-3 bg-spider-cyan text-black font-comic text-lg px-3 py-0.5 border-2 border-black rotate-[2deg] shadow-[3px_3px_0px_#000]">
+                                DISEÑO RESPONSIVE
+                            </div>
+                        </div>
+
+                        <div class="p-6 space-y-4">
+                            <h3 class="font-comic text-3xl tracking-wide text-white">
+                                LANDING PAGE AUDI
+                            </h3>
+                            <p class="text-gray-300 text-sm leading-relaxed">
+                                Landing page promocional moderna y totalmente responsive inspirada en el sector automovilístico de alta gama. Interfaz dinámica con gran cuidado tipográfico y visual.
+                            </p>
+                            <div class="flex flex-wrap gap-2 font-mono text-xs font-bold pt-1">
+                                <span class="bg-orange-500 text-white px-2.5 py-0.5 border border-black">HTML5</span>
+                                <span class="bg-spider-cyan text-black px-2.5 py-0.5 border border-black">Tailwind CSS</span>
+                                <span class="bg-spider-yellow text-black px-2.5 py-0.5 border border-black">JavaScript</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="px-6 pb-6 pt-2">
+                        <a href="https://github.com/Juandi01/LandingAudi.git" target="_blank" rel="noopener noreferrer" class="spider-btn w-full bg-spider-cyan text-black font-mono font-extrabold text-sm py-3 flex items-center justify-center gap-2 hover:bg-white">
+                            <i data-lucide="Github" class="w-4 h-4"></i>
+                            <span>EXPLORAR REPOSITORIO</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="ExternalLink" aria-hidden="true" class="lucide lucide-ExternalLink w-4 h-4"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- PROYECTO 3: Proyecto Blog con Symfony -->
+                <article class="project-card bugle-card flex flex-col justify-between overflow-hidden" data-category="symfony">
+                    <div>
+                        <div class="bg-black px-4 py-2 border-b-2 border-black flex items-center justify-between font-mono text-xs">
+                            <span class="text-spider-red font-bold">EDICIÓN #03 // ARQUITECTURA WEB</span>
+                            <span class="text-gray-400">PHP + SYMFONY</span>
+                        </div>
+
+                        <div class="relative h-52 bg-gradient-to-tr from-[#12131f] via-indigo-950 to-spider-cyan/30 border-b-4 border-black overflow-hidden group">
+                            <img src="https://juandi01.github.io/portfolioastro1/proyecto2.png" alt="Proyecto Blog con Symfony Preview" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/800x450/12131f/ffe600?text=Blog+Symfony'">
+                            <div class="absolute top-3 left-3 bg-spider-red text-white font-comic text-lg px-3 py-0.5 border-2 border-black rotate-[-2deg] shadow-[3px_3px_0px_#000]">
+                                ACCESIBILIDAD + UI
+                            </div>
+                        </div>
+
+                        <div class="p-6 space-y-4">
+                            <h3 class="font-comic text-3xl tracking-wide text-white">
+                                PROYECTO BLOG CON SYMFONY
+                            </h3>
+                            <p class="text-gray-300 text-sm leading-relaxed">
+                                Diseño responsive creado desde cero para una plataforma de contenidos, aplicando buenas prácticas de accesibilidad web, maquetación modular con Tailwind y backend en Symfony.
+                            </p>
+                            <div class="flex flex-wrap gap-2 font-mono text-xs font-bold pt-1">
+                                <span class="bg-spider-red text-white px-2.5 py-0.5 border border-black">PHP</span>
+                                <span class="bg-white text-black px-2.5 py-0.5 border border-black">Symfony</span>
+                                <span class="bg-spider-cyan text-black px-2.5 py-0.5 border border-black">Tailwind CSS</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="px-6 pb-6 pt-2">
+                        <a href="https://github.com/Juandi01/Cliente-25-26/tree/main/Cliente%2025-26/Practica4" target="_blank" rel="noopener noreferrer" class="spider-btn w-full bg-spider-red text-white font-mono font-extrabold text-sm py-3 flex items-center justify-center gap-2 hover:bg-spider-yellow hover:text-black">
+                            <i data-lucide="Github" class="w-4 h-4"></i>
+                            <span>EXPLORAR REPOSITORIO</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="ExternalLink" aria-hidden="true" class="lucide lucide-ExternalLink w-4 h-4"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- PROYECTO 4: Gestor de Tareas -->
+                <article class="project-card bugle-card flex flex-col justify-between overflow-hidden" data-category="frontend">
+                    <div>
+                        <div class="bg-black px-4 py-2 border-b-2 border-black flex items-center justify-between font-mono text-xs">
+                            <span class="text-spider-yellow font-bold">EDICIÓN #04 // PRODUCTIVIDAD</span>
+                            <span class="text-gray-400">JAVASCRIPT VANILLA</span>
+                        </div>
+
+                        <div class="relative h-52 bg-gradient-to-tr from-[#12131f] via-purple-950 to-spider-yellow/30 border-b-4 border-black overflow-hidden group">
+                            <img src="https://juandi01.github.io/portfolioastro1/proyecto1.png" alt="Gestor de Tareas Preview" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/800x450/12131f/00f0ff?text=Gestor+de+Tareas+JS'">
+                            <div class="absolute top-3 left-3 bg-white text-black font-comic text-lg px-3 py-0.5 border-2 border-black rotate-[3deg] shadow-[3px_3px_0px_#000]">
+                                DOM INTERACTIVO
+                            </div>
+                        </div>
+
+                        <div class="p-6 space-y-4">
+                            <h3 class="font-comic text-3xl tracking-wide text-white">
+                                GESTOR DE TAREAS
+                            </h3>
+                            <p class="text-gray-300 text-sm leading-relaxed">
+                                Aplicación interactiva de gestión de tareas con manipulación ágil del DOM, interfaz intuitiva y enfoque en la organización del flujo de trabajo diario.
+                            </p>
+                            <div class="flex flex-wrap gap-2 font-mono text-xs font-bold pt-1">
+                                <span class="bg-orange-500 text-white px-2.5 py-0.5 border border-black">HTML5</span>
+                                <span class="bg-blue-500 text-white px-2.5 py-0.5 border border-black">CSS3</span>
+                                <span class="bg-spider-yellow text-black px-2.5 py-0.5 border border-black">JavaScript</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="px-6 pb-6 pt-2">
+                        <a href="https://github.com/Juandi01/Cliente-25-26/tree/main/Cliente%2025-26/Practica4" target="_blank" rel="noopener noreferrer" class="spider-btn w-full bg-white text-black font-mono font-extrabold text-sm py-3 flex items-center justify-center gap-2 hover:bg-spider-yellow">
+                            <i data-lucide="Github" class="w-4 h-4"></i>
+                            <span>EXPLORAR REPOSITORIO</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="ExternalLink" aria-hidden="true" class="lucide lucide-ExternalLink w-4 h-4"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg>
+                        </a>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- 4. EXPERIENCIA Y EDUCACIÓN ("LÍNEA TEMPORAL DEL MULTIVERSO") -->
+        <section id="experiencia" class="space-y-8">
+            <div class="border-b-4 border-black pb-4">
+                <span class="comic-caption px-3 py-0.5 font-mono text-xs font-extrabold uppercase inline-block mb-2">
+                    CAPÍTULO 04 // TRAYECTORIA &amp; FORMACIÓN
+                </span>
+                <h2 class="font-comic text-4xl sm:text-5xl uppercase chromatic-text">
+                    MISIONES COMPLETADAS &amp; ACADEMIA
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                
+                <!-- Columna Experiencia Laboral (7 cols) -->
+                <div class="lg:col-span-7 space-y-6">
+                    <h3 class="font-comic text-2xl tracking-wider text-spider-yellow flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="Briefcase" aria-hidden="true" class="lucide lucide-Briefcase w-6 h-6 text-spider-red"><path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path><rect width="20" height="14" x="2" y="6" rx="2"></rect></svg>
+                        <span>EXPERIENCIA LABORAL</span>
+                    </h3>
+
+                    <div class="space-y-5 relative before:absolute before:top-3 before:bottom-3 before:left-4 before:w-1 before:bg-spider-red">
+                        
+                        <!-- Experiencia 1: Dencanto Community -->
+                        <div class="pl-12 relative">
+                            <div class="w-6 h-6 bg-spider-yellow border-3 border-black absolute left-1.5 top-4 rotate-45 shadow-[2px_2px_0px_#000]"></div>
+                            <div class="comic-panel p-5">
+                                <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                                    <span class="font-comic text-2xl text-white tracking-wide">DESARROLLADOR WEB</span>
+                                    <span class="bg-spider-red text-white font-mono text-xs font-bold px-2.5 py-0.5 border border-black">
+                                        MARZO 2026 - JUNIO 2026
+                                    </span>
+                                </div>
+                                <p class="font-mono text-xs text-spider-cyan font-bold mb-2">
+                                    🏢 DENCANTO COMMUNITY
+                                </p>
+                                <p class="text-gray-300 text-sm leading-relaxed">
+                                    Desarrollo e implementación de aplicaciones web, aplicando tecnologías del stack de forma activa en un entorno empresarial real y colaborativo.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Experiencia 2: Norte Hispana -->
+                        <div class="pl-12 relative">
+                            <div class="w-6 h-6 bg-spider-cyan border-3 border-black absolute left-1.5 top-4 rotate-45 shadow-[2px_2px_0px_#000]"></div>
+                            <div class="comic-panel p-5">
+                                <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                                    <span class="font-comic text-2xl text-white tracking-wide">COMERCIAL DE SEGUROS</span>
+                                    <span class="bg-spider-panel text-spider-yellow font-mono text-xs font-bold px-2.5 py-0.5 border border-spider-yellow">
+                                        ENERO 2024 - ABRIL 2024
+                                    </span>
+                                </div>
+                                <p class="font-mono text-xs text-spider-cyan font-bold mb-2">
+                                    🏢 NORTE HISPANA
+                                </p>
+                                <p class="text-gray-300 text-sm leading-relaxed">
+                                    Desarrollo de habilidades clave transferibles al sector IT: resiliencia, trabajo bajo presión, comunicación efectiva con clientes y orientación a resultados.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Experiencia 3: Voluntariado -->
+                        <div class="pl-12 relative">
+                            <div class="w-6 h-6 bg-white border-3 border-black absolute left-1.5 top-4 rotate-45 shadow-[2px_2px_0px_#000]"></div>
+                            <div class="comic-panel p-5">
+                                <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                                    <span class="font-comic text-2xl text-white tracking-wide">VOLUNTARIADO SOCIAL</span>
+                                    <span class="bg-black text-gray-300 font-mono text-xs font-bold px-2.5 py-0.5 border border-gray-700">
+                                        OCTUBRE 2018 - MAYO 2019
+                                    </span>
+                                </div>
+                                <p class="font-mono text-xs text-spider-cyan font-bold mb-2">
+                                    🤝 ASILO DE PERSONAS MAYORES
+                                </p>
+                                <p class="text-gray-300 text-sm leading-relaxed">
+                                    Cuidado y apoyo a personas mayores, diseñando actividades grupales y desarrollando gran capacidad de empatía, comunicación interpersonal y paciencia.
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Columna Datos Académicos (5 cols) -->
+                <div class="lg:col-span-5 space-y-6">
+                    <h3 class="font-comic text-2xl tracking-wider text-spider-cyan flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="GraduationCap" aria-hidden="true" class="lucide lucide-GraduationCap w-6 h-6 text-spider-cyan"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"></path><path d="M22 10v6"></path><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"></path></svg>
+                        <span>DATOS ACADÉMICOS</span>
+                    </h3>
+
+                    <div class="space-y-5">
+                        <div class="comic-panel-cyan p-6 relative overflow-hidden">
+                            <span class="bg-spider-yellow text-black font-mono text-[11px] font-extrabold px-2 py-0.5 border border-black inline-block mb-3">
+                                FORMACIÓN SUPERIOR
+                            </span>
+                            <h4 class="font-comic text-2xl text-white tracking-wide mb-1">
+                                GRADO SUPERIOR EN DESARROLLO DE APLICACIONES WEB (DAW)
+                            </h4>
+                            <p class="font-mono text-xs text-spider-cyan font-bold mb-3">
+                                📍 ESCUELA ARTE GRANADA
+                            </p>
+                            <p class="text-xs text-gray-300 leading-relaxed">
+                                Especialización en desarrollo Full-Stack, arquitectura cliente-servidor, bases de datos relacionales, despliegue de aplicaciones e interfaces web modernas.
+                            </p>
+                        </div>
+
+                        <div class="comic-panel p-6">
+                            <span class="bg-white text-black font-mono text-[11px] font-extrabold px-2 py-0.5 border border-black inline-block mb-3">
+                                BASE CIENTÍFICO-TÉCNICA
+                            </span>
+                            <h4 class="font-comic text-2xl text-white tracking-wide mb-1">
+                                BACHILLERATO TECNOLÓGICO
+                            </h4>
+                            <p class="font-mono text-xs text-spider-yellow font-bold">
+                                📍 COLEGIO MARISTAS CÓRDOBA
+                            </p>
+                        </div>
+
+                        <!-- Tarjeta extra: Filosofía de Trabajo -->
+                        <div class="bg-spider-yellow text-black p-5 border-4 border-black shadow-[6px_6px_0px_#ff003c] rotate-[-1deg]">
+                            <p class="font-comic text-2xl uppercase leading-tight mb-1">
+                                "UN GRAN CÓDIGO CONLLEVA UNA GRAN RESPONSABILIDAD"
+                            </p>
+                            <p class="font-mono text-xs font-bold">
+                                Listo para aportar valor en equipos de desarrollo, aprender rápido e impulsar proyectos con IA y tecnologías web actuales.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 5. CONTACTO ("SEÑAL ARÁCNIDA / ¿HABLAMOS?") -->
+        <section id="contacto" class="pb-12">
+            <div class="comic-panel p-8 sm:p-10 relative overflow-hidden bg-gradient-to-br from-[#12131f] via-[#19102c] to-[#09090e]">
+                <div class="max-w-3xl mx-auto text-center space-y-6 relative z-10">
+                    <span class="comic-caption px-4 py-1 font-mono text-xs font-extrabold uppercase inline-block">
+                        CAPÍTULO 05 // TRANSMISIÓN DIRECTA
+                    </span>
+
+                    <h2 class="font-comic text-5xl sm:text-6xl uppercase chromatic-text">
+                        ¿HABLAMOS? ¡LANZA UNA RED!
+                    </h2>
+
+                    <p class="text-gray-300 text-base sm:text-lg">
+                        Si buscas un desarrollador web proactivo con base en <strong class="text-spider-yellow">PHP, Symfony, Astro, Tailwind e IA</strong>, puedes contactar conmigo por correo electrónico o a través de mis perfiles profesionales:
+                    </p>
+
+                    <!-- Correo Electrónico Destacado (Sin Teléfono por Privacidad) -->
+                    <div class="max-w-xl mx-auto pt-4 text-left">
+                        <div class="bg-black/80 border-2 border-spider-cyan p-4 sm:p-5 flex items-center justify-between gap-3 shadow-[5px_5px_0px_#000]">
+                            <div class="overflow-hidden">
+                                <span class="font-mono text-[11px] text-spider-cyan font-bold block uppercase">CORREO ELECTRÓNICO PROFESIONAL</span>
+                                <span class="font-mono text-sm sm:text-lg text-white font-bold truncate block">juandi.dm7@gmail.com</span>
+                            </div>
+                            <div class="flex items-center gap-2 shrink-0">
+                                <button onclick="copyToClipboard('juandi.dm7@gmail.com', '¡Email copiado!')" class="spider-btn bg-spider-cyan text-black px-3 py-2.5 font-mono text-xs font-extrabold flex items-center gap-1.5" title="Copiar Email">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="Copy" aria-hidden="true" class="lucide lucide-Copy w-4 h-4"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>
+                                    <span class="hidden sm:inline">COPIAR</span>
+                                </button>
+                                <a href="mailto:juandi.dm7@gmail.com" class="spider-btn bg-spider-red text-white px-3 py-2.5 font-mono text-xs font-extrabold flex items-center gap-1.5" title="Enviar Correo">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="Mail" aria-hidden="true" class="lucide lucide-Mail w-4 h-4"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"></path><rect x="2" y="4" width="20" height="16" rx="2"></rect></svg>
+                                    <span class="hidden sm:inline">ESCRIBIR</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Redes Sociales -->
+                    <div class="flex flex-wrap justify-center gap-4 pt-4">
+                        <a href="https://github.com/Juandi01" target="_blank" rel="noopener noreferrer" class="spider-btn bg-white text-black font-mono font-extrabold text-sm px-6 py-3 inline-flex items-center gap-2 hover:bg-spider-yellow">
+                            <i data-lucide="Github" class="w-5 h-5"></i>
+                            <span>github.com/Juandi01</span>
+                        </a>
+                        <a href="https://linkedin.com/in/juandi-delgado-6240b2321" target="_blank" rel="noopener noreferrer" class="spider-btn bg-spider-cyan text-black font-mono font-extrabold text-sm px-6 py-3 inline-flex items-center gap-2 hover:bg-white">
+                            <i data-lucide="Linkedin" class="w-5 h-5"></i>
+                            <span>LinkedIn Oficial</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="border-t-4 border-black bg-black py-8 text-center font-mono text-xs text-gray-400">
+        <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p>© 2026 <strong class="text-white">Juan Diego Delgado Morente</strong>. Creado con Astro &amp; Tailwind CSS.</p>
+            <button onclick="openAstroModal()" class="text-spider-yellow hover:underline font-bold">
+                ⚡ Ver código fuente para tu proyecto Astro
+            </button>
+        </div>
+    </footer>
+
+    <!-- MODAL PARA COPIAR EL CÓDIGO DE ASTRO DIRECTAMENTE A TU PROYECTO -->
+    <div id="astro-modal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-sm hidden items-center justify-center p-4">
+        <div class="comic-panel max-w-4xl w-full max-h-[90vh] flex flex-col bg-[#0d0e17] border-4 border-spider-yellow">
+            <!-- Cabecera del Modal -->
+            <div class="flex items-center justify-between px-6 py-4 bg-black border-b-4 border-black">
+                <div class="flex items-center gap-2">
+                    <span class="bg-spider-red text-white font-comic text-xl px-2.5 py-0.5 border border-black">ASTRO READY</span>
+                    <h3 class="font-mono text-sm sm:text-base font-extrabold text-white">
+                        Guía rápida para actualizar tu repositorio `portfolioastro1`
+                    </h3>
+                </div>
+                <button onclick="closeAstroModal()" class="spider-btn bg-spider-red text-white px-3 py-1 font-mono text-xs font-bold">
+                    ✕ CERRAR
+                </button>
+            </div>
+
+            <!-- Contenido del Modal -->
+            <div class="p-6 overflow-y-auto space-y-4 font-sans text-sm text-gray-200">
+                <div class="bg-black/60 border-l-4 border-spider-cyan p-4 space-y-2">
+                    <p class="font-bold text-spider-cyan font-mono text-xs uppercase">¿Cómo pasarlo a tu proyecto de Astro en Ubuntu?</p>
+                    <ol class="list-decimal list-inside space-y-1 text-xs sm:text-sm text-gray-300">
+                        <li>Tus imágenes actuales (<code class="text-spider-yellow">/portfolioastro1/proyecto1.png</code>, etc.) ya están configuradas en este código.</li>
+                        <li>Haz clic en el botón amarillo de abajo para copiar todo el código y pégalo dentro de tu archivo <code class="text-spider-cyan font-mono">src/pages/index.astro</code>.</li>
+                        <li>Ejecuta <code class="text-spider-yellow font-mono">npm run dev</code> para previsualizarlo o haz <code class="text-spider-yellow font-mono">git push</code> para actualizar tu GitHub Pages.</li>
+                    </ol>
+                </div>
+
+                <div class="flex items-center justify-between">
+                    <span class="font-mono text-xs text-gray-400">Archivo: <strong class="text-white">src/pages/index.astro</strong></span>
+                    <button onclick="copyAstroCode()" class="spider-btn bg-spider-yellow text-black font-mono text-xs font-extrabold px-4 py-2 flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="Copy" aria-hidden="true" class="lucide lucide-Copy w-4 h-4"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>
+                        <span>COPIAR CÓDIGO PARA INDEX.ASTRO</span>
+                    </button>
+                </div>
+
+                <pre id="astro-code-display" class="bg-black p-4 border-2 border-gray-800 text-xs font-mono text-cyan-300 overflow-x-auto max-h-64 select-all"></pre>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Inicializar iconos Lucide
+        lucide.createIcons();
+
+        // Filtrado de proyectos por categoría
+        function filterProjects(category) {
+            const cards = document.querySelectorAll('.project-card');
+            const buttons = document.querySelectorAll('.filter-btn');
+
+            buttons.forEach(btn => {
+                if (btn.dataset.filter === category) {
+                    btn.classList.remove('bg-spider-panel', 'text-white');
+                    btn.classList.add('bg-spider-yellow', 'text-black');
+                } else {
+                    btn.classList.remove('bg-spider-yellow', 'text-black');
+                    btn.classList.add('bg-spider-panel', 'text-white');
+                }
+            });
+
+            cards.forEach(card => {
+                if (category === 'all' || card.dataset.category === category) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Cambiar entre Tierra-1610 (Miles Morales) y Tierra-65 (Gwen Stacy)
+        let isEarth65 = false;
+        function toggleDimension() {
+            const body = document.body;
+            const main = document.getElementById('main-container');
+            const badge = document.getElementById('dimension-badge');
+
+            // Efecto de Glitch en toda la pantalla
+            main.classList.add('screen-glitch');
+            setTimeout(() => main.classList.remove('screen-glitch'), 650);
+
+            isEarth65 = !isEarth65;
+            if (isEarth65) {
+                body.classList.add('earth-65');
+                badge.textContent = 'EARTH-65 // GWEN NEON MODE';
+                badge.classList.replace('bg-spider-yellow', 'bg-spider-cyan');
+                showComicToast('¡SALTO DIMENSIONAL A TIERRA-65!');
+            } else {
+                body.classList.remove('earth-65');
+                badge.textContent = 'EARTH-1610 // GRANADA';
+                badge.classList.replace('bg-spider-cyan', 'bg-spider-yellow');
+                showComicToast('¡REGRESO A TIERRA-1610!');
+            }
+        }
+
+        // Copiar texto al portapapeles compatible con iFrames
+        function copyToClipboard(text, message) {
+            const tempInput = document.createElement('textarea');
+            tempInput.value = text;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+            showComicToast(message);
+        }
+
+        // Mostrar Notificación Estilo Cómic
+        let toastTimeout;
+        function showComicToast(message) {
+            const toast = document.getElementById('comic-toast');
+            const toastText = document.getElementById('comic-toast-text');
+            toastText.textContent = message;
+            toast.classList.remove('hidden');
+            clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 3000);
+        }
+
+        // Modal de exportación a Astro
+        function openAstroModal() {
+            const modal = document.getElementById('astro-modal');
+            const codeDisplay = document.getElementById('astro-code-display');
+            
+            // Generamos la plantilla lista para index.astro con frontmatter de Astro
+            const astroTemplate = `---
+// src/pages/index.astro
+// Portfolio Spider-Verse de Juan Diego Delgado Morente
+const proyectos = [
+  {
+    edicion: "EDICIÓN #01 // FULL-STACK",
+    titulo: "ZENPAW 2.0",
+    descripcion: "Blog ZenPaw mejorado. Aplicación web completa desarrollada con arquitectura MVC en Symfony y Tailwind CSS.",
+    imagen: "/portfolioastro1/proyecto3.png",
+    etiqueta: "¡NUEVA VERSIÓN!",
+    tecnologias: ["PHP", "Symfony", "Tailwind CSS"],
+    repo: "https://github.com/Juandi01/ZenPaw2.0.git",
+    categoria: "symfony"
+  },
+  {
+    edicion: "EDICIÓN #02 // AUTOMOCIÓN UI",
+    titulo: "LANDING PAGE AUDI",
+    descripcion: "Landing page promocional moderna y responsive inspirada en el sector automovilístico de alta gama.",
+    imagen: "/portfolioastro1/proyecto4.png",
+    etiqueta: "DISEÑO RESPONSIVE",
+    tecnologias: ["HTML5", "Tailwind CSS", "JavaScript"],
+    repo: "https://github.com/Juandi01/LandingAudi.git",
+    categoria: "frontend"
+  },
+  {
+    edicion: "EDICIÓN #03 // ARQUITECTURA WEB",
+    titulo: "PROYECTO BLOG CON SYMFONY",
+    descripcion: "Diseño responsive creado desde cero aplicando buenas prácticas de accesibilidad web, Tailwind y Symfony.",
+    imagen: "/portfolioastro1/proyecto2.png",
+    etiqueta: "ACCESIBILIDAD + UI",
+    tecnologias: ["PHP", "Symfony", "Tailwind CSS"],
+    repo: "https://github.com/Juandi01/Cliente-25-26/tree/main/Cliente%2025-26/Practica4",
+    categoria: "symfony"
+  },
+  {
+    edicion: "EDICIÓN #04 // PRODUCTIVIDAD",
+    titulo: "GESTOR DE TAREAS",
+    descripcion: "Aplicación interactiva de gestión de tareas con manipulación ágil del DOM e interfaz intuitiva.",
+    imagen: "/portfolioastro1/proyecto1.png",
+    etiqueta: "DOM INTERACTIVO",
+    tecnologias: ["HTML5", "CSS3", "JavaScript"],
+    repo: "https://github.com/Juandi01/Cliente-25-26/tree/main/Cliente%2025-26/Practica4",
+    categoria: "frontend"
+  }
+];
+---
+` + document.documentElement.outerHTML;
+
+            codeDisplay.textContent = astroTemplate;
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeAstroModal() {
+            const modal = document.getElementById('astro-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        function copyAstroCode() {
+            const code = document.getElementById('astro-code-display').textContent;
+            copyToClipboard(code, '¡Código de index.astro copiado!');
+        }
+    </script>
+
+</body></html>
